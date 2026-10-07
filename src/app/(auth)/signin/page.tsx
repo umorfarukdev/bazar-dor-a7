@@ -1,31 +1,55 @@
-"use client"
+"use client";
 
+import GithubSign from "@/components/GithubSign";
+import GoogleSign from "@/components/GoogleSign";
 import { signIn } from "@/lib/auth-client";
 import Link from "next/link";
-import { FaGithub } from "react-icons/fa";
-import { FcGoogle } from "react-icons/fc";
+import { Bounce, toast } from "react-toastify";
 
 const SignIn = () => {
-        const handleSignIn = async (e: React.SubmitEvent<HTMLElement>) => {
-            e.preventDefault()
-    
-            const formData = new FormData(e.target)
-            const signInData = Object.fromEntries(formData.entries()) as {
-                name: string
-                email: string
-                password: string
-                confirmPassword: string
-            }
-    
-            const {data, error} = await signIn.email({
-                email: signInData.email,
-                password: signInData.password,
-                // confirmPassword: signInData.confirmPassword
-            })
-    
-            console.log("user", data, "error", error)
-          
-        }
+  const handleSignIn = async (e: React.SubmitEvent<HTMLElement>) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const signInData = Object.fromEntries(formData.entries()) as {
+      email: string;
+      password: string;
+    };
+
+    const { data, error } = await signIn.email({
+      email: signInData.email,
+      password: signInData.password,
+      callbackURL: "/"
+    });
+
+    if (error) {
+      toast.error("Please try again!", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+    }
+
+    if (data) {
+      toast.success("User Login Successfull!", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+    }
+  };
   return (
     <div>
       <div className="w-full max-w-xl mx-auto p-8 space-y-3 rounded-xl dark:bg-gray-50 dark:text-gray-800">
@@ -61,24 +85,17 @@ const SignIn = () => {
                 className="w-full px-4 py-3 rounded-md border-2 border-gray-200 dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
               />
             </div>
-            <button type="submit" className="block w-full text-white font-semibold bg-[#34A853] p-3 text-center rounded-md dark:text-gray-50 dark:bg-violet-600">
+            <button
+              type="submit"
+              className="block w-full text-white font-semibold bg-[#34A853] p-3 text-center rounded-md dark:text-gray-50 dark:bg-violet-600"
+            >
               সাইন ইন
             </button>
           </form>
           <div className="divider">অথবা</div>
           <div className="">
-            <button
-              aria-label="Log in with Google"
-              className="p-3 btn w-full mb-4 text-xl rounded-sm flex items-center gap-1.5"
-            >
-              <FcGoogle className="text-xl"></FcGoogle> Google দিয়ে চালিয়ে যান
-            </button>
-            <button
-              aria-label="Log in with GitHub"
-              className="p-3 btn w-full mb-4 text-xl rounded-sm flex items-center gap-1.5"
-            >
-              <FaGithub className="text-xl"></FaGithub> GitHub দিয়ে চালিয়ে যান
-            </button>
+            <GoogleSign></GoogleSign>
+            <GithubSign></GithubSign>
           </div>
           <p className="text-lg text-center sm:px-6  dark:text-gray-600">
             অ্যাকাউন্ট নেই?
