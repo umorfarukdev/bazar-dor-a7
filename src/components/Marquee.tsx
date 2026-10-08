@@ -3,12 +3,12 @@ import React from "react";
 import { RxTriangleDown, RxTriangleUp } from "react-icons/rx";
 import MarqueeText from "react-marquee-text";
 
-interface IProduct {
+export interface IProduct {
   id: string;
   nameBn: string;
   image: string;
   today: number;
-  unit: "kg" | "litre";
+  unit: "kg" | "litre" | "dozen" | "piece";
   change: {
     dir: "up" | "down" | "flat";
     pct: number;
@@ -17,10 +17,9 @@ interface IProduct {
 
 const Marquee = async () => {
   const res = await fetch(
-    "https://api.api-store.workers.dev/api/bazardor/products",
+    "https://api.abcz.workers.dev/api/bazardor/products",
   );
   const products: IProduct[] = await res.json();
-  console.log(products);
   return (
     <MarqueeText direction="right" duration={10} pauseOnHover >
       <div className="py-4 border-b-2 border-gray-200">
