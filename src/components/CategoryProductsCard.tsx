@@ -1,17 +1,17 @@
-
-import { IProduct } from "@/type/productType";
 import { RxTriangleDown, RxTriangleUp } from "react-icons/rx";
+import Link from "next/link";
+import { IProduct } from "@/type/productType";
 
-const ProductCard = ({ product }: { product: IProduct }) => {
+const CategoryProductsCard =  ({ product }: { product: IProduct }) => {
+
   const unitLabels = {
     kg: "প্রতি কেজি",
     litre: "প্রতি লিটার",
     dozen: "প্রতি ডজন",
     piece: "প্রতি পিস",
   } as const;
-
   return (
-    <div className="bg-white p-5 rounded-xl">
+    <Link href={`/product/${product.id}`} className="bg-white p-5 rounded-xl">
       <div className="flex gap-2 items-center mb-4">
         <h1 className="text-3xl bg-gray-200 p-3 rounded-2xl">
           {product.image}
@@ -21,6 +21,8 @@ const ProductCard = ({ product }: { product: IProduct }) => {
           <p className="text-[#1D271F70]">{unitLabels[product.unit]}</p>
         </div>
       </div>
+
+
       <div>
         <span className="text-[#1D271F70]">আজকের দাম</span>
         <div className="flex items-center gap-30 justify-between">
@@ -38,6 +40,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
                   <span>{product.change.pct}%</span>
                 </div>
               </>
+              
             ) : product.change.dir === "down" ? (
               <>
                 <div className="flex items-end text-green-700">
@@ -56,8 +59,8 @@ const ProductCard = ({ product }: { product: IProduct }) => {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
-export default ProductCard;
+export default CategoryProductsCard;

@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = () => {
     return (
         <footer>
-            <div className='lg:flex text-center py-10 px-1 justify-center lg:justify-between container mx-auto'>
+            <div className='lg:flex text-center py-10 px-1 justify-center lg:justify-between max-w-6xl mx-auto'>
                 <h1>বাজার দর — প্রয়োজনীয় পণ্যের দাম এক নজরে।</h1>
                 <h1>সকল দাম সম্ভাব্য; বাজার অবস্থার ওপর নির্ভর করে পরিবর্তিত হয়।</h1>
             </div>

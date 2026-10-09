@@ -12,7 +12,7 @@ export default async function Home() {
     <div className="bg-base-300">
       <Banner></Banner>
 
-      <main className="container mx-auto mb-10">
+      <main className="max-w-6xl mx-auto mb-10">
         <section className="mt-16">
           <h1 className="flex items-center text-3xl font-bold mb-7">
             <RxTriangleUp className="text-5xl text-red-600" />

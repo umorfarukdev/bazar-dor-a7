@@ -7,7 +7,7 @@ const Banner = () => {
     dateStyle: "full",
   });
   return (
-    <div className="container mx-auto my-10">
+    <div className="max-w-6xl mx-auto my-10">
       <div className="">
         <div className="hero-content  flex-col lg:flex-row-reverse bg-white p-7 border-3 border-gray-200 rounded-2xl">
           <Image alt="Tailwind CSS hero component" src={Hero} />

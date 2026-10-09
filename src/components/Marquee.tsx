@@ -1,23 +1,11 @@
+import { IProduct } from "@/type/productType";
 import Link from "next/link";
-import React from "react";
 import { RxTriangleDown, RxTriangleUp } from "react-icons/rx";
 import MarqueeText from "react-marquee-text";
 
-export interface IProduct {
-  id: string;
-  nameBn: string;
-  image: string;
-  today: number;
-  unit: "kg" | "litre" | "dozen" | "piece";
-  change: {
-    dir: "up" | "down" | "flat";
-    pct: number;
-  };
-}
-
 const Marquee = async () => {
   const res = await fetch(
-    "https://api.abcz.workers.dev/api/bazardor/products",
+    "https://api.api-store.workers.dev/api/bazardor/products",
   );
   const products: IProduct[] = await res.json();
   return (

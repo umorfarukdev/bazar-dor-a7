@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <div className="">
       <div className="py-4 border-b-2 border-gray-200">
-        <div className="flex justify-between container mx-auto ">
+        <div className="flex justify-between max-w-6xl mx-auto ">
           <div className="flex gap-2 items-center">
             <div className="bg-[#34A853] p-3 rounded-xl flex items-center">
               <Image className="" src={Logo} alt="hero logo"></Image>
