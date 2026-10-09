@@ -3,8 +3,8 @@ import React from "react";
 
 const ProductSummuryCard = ({ product }: { product: IProduct }) => {
   return (
-    <div className="max-w-6xl mx-auto">
-      <div className="mt-6 bg-white rounded-2xl border p-5">
+    <div className="">
+      <div className="p-5">
         <h2 className="font-bold text-lg mb-4">দামের সারসংক্ষেপ</h2>
 
         <div className="grid md:grid-cols-3 gap-4">

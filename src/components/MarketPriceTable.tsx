@@ -2,12 +2,11 @@ import { IProduct } from "@/type/productType";
 
 const MarketPriceTable = ({ product }: { product: IProduct }) => {
   return (
-    <div className="max-w-6xl mx-auto">
-      <div className="mt-6 bg-white rounded-2xl border overflow-hidden">
-        <h2 className="text-lg font-bold p-5">বাজারভিত্তিক আজকের দাম</h2>
-
+    <div className="p-5">
+      <h2 className="text-lg font-bold">বাজারভিত্তিক আজকের দাম</h2>
+      <div className="border-2 rounded-2xl py-1 overflow-hidden">
         <table className="w-full">
-          <thead className="bg-gray-50">
+          <thead className="bg-gray-50 overflow-hidden">
             <tr className="text-[#1D271F60]">
               <th className="text-left p-4">বাজার</th>
               <th className="text-left p-4">বিভাগ</th>
