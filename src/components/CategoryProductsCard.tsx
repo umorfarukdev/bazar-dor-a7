@@ -1,28 +1,16 @@
 import { RxTriangleDown, RxTriangleUp } from "react-icons/rx";
 import Link from "next/link";
 import { IProduct } from "@/type/productType";
+import { toBengaliNumber } from "@/utils/number";
 
-const CategoryProductsCard =  ({ product }: { product: IProduct }) => {
+export const unitLabels = {
+  kg: "প্রতি কেজি",
+  litre: "প্রতি লিটার",
+  dozen: "প্রতি ডজন",
+  piece: "প্রতি পিস",
+} as const;
 
-  const unitLabels = {
-    kg: "প্রতি কেজি",
-    litre: "প্রতি লিটার",
-    dozen: "প্রতি ডজন",
-    piece: "প্রতি পিস",
-  } as const;
-  const toBengaliNumber = (value: number | string) => {
-  const englishDigits = "0123456789";
-  const bengaliDigits = "০১২৩৪৫৬৭৮৯";
-
-  return value
-    .toString()
-    .split("")
-    .map((digit) => {
-      const index = englishDigits.indexOf(digit);
-      return index !== -1 ? bengaliDigits[index] : digit;
-    })
-    .join("");
-};
+const CategoryProductsCard = ({ product }: { product: IProduct }) => {
   return (
     <Link href={`/product/${product.id}`} className="bg-white p-5 rounded-xl">
       <div className="flex gap-2 items-center mb-4">
@@ -35,12 +23,13 @@ const CategoryProductsCard =  ({ product }: { product: IProduct }) => {
         </div>
       </div>
 
-
       <div>
         <span className="text-[#1D271F70]">আজকের দাম</span>
         <div className="flex items-center gap-30 justify-between">
           <div className="flex items-end gap-1.5">
-            <h1 className="font-semibold text-xl">{toBengaliNumber(toBengaliNumber(product.today))}</h1>
+            <h1 className="font-semibold text-xl">
+              {toBengaliNumber(toBengaliNumber(product.today))}
+            </h1>
             <p>টাকা</p>
           </div>
           <div className="">
@@ -50,23 +39,28 @@ const CategoryProductsCard =  ({ product }: { product: IProduct }) => {
                   <span className="text-3xl">
                     <RxTriangleUp />
                   </span>
-                  <span>{toBengaliNumber(toBengaliNumber(product.change.pct))}%</span>
+                  <span>
+                    {toBengaliNumber(toBengaliNumber(product.change.pct))}%
+                  </span>
                 </div>
               </>
-              
             ) : product.change.dir === "down" ? (
               <>
                 <div className="flex items-end text-green-700">
                   <span className="text-3xl">
                     <RxTriangleDown />
                   </span>
-                  <span>{toBengaliNumber(toBengaliNumber(product.change.pct))}%</span>
+                  <span>
+                    {toBengaliNumber(toBengaliNumber(product.change.pct))}%
+                  </span>
                 </div>
               </>
             ) : (
               <div className="flex items-center text-gray-500">
                 <span className="text-3xl">--</span>
-                <span>{toBengaliNumber(toBengaliNumber(product.change.pct))}%</span>
+                <span>
+                  {toBengaliNumber(toBengaliNumber(product.change.pct))}%
+                </span>
               </div>
             )}
           </div>

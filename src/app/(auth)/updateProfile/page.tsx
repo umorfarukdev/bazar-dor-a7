@@ -22,7 +22,6 @@ const UpdateProfile = () => {
 
     if (data) {
       toast.success("Profile updated successfully!");
-      console.log(data);
     }
     router.push("/profile");
 

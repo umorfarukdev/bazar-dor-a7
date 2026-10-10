@@ -11,12 +11,12 @@ const Header = () => {
       <div className="py-4 border-b-2 border-gray-200">
         <div className="flex justify-between max-w-6xl mx-auto ">
           <Link href={"/"} className="flex gap-2 items-center">
-            <div className="bg-[#34A853] p-3 rounded-xl flex items-center">
-              <Image className="" src={Logo} alt="hero logo"></Image>
+            <div className="bg-[#34A853] p-2 rounded-xl flex items-center">
+              <Image className="" src={Logo} alt="hero logo" width={40} height={40}></Image>
             </div>
             <div>
-              <h1>বাজার দর</h1>
-              <p>{date}</p>
+              <h1 className="font-bold text-xl mb-1">বাজার দর</h1>
+              <p className="text-[#1D271F70]">{date}</p>
             </div>
           </Link>
           <UserInfo></UserInfo>

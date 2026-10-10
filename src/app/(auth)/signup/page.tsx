@@ -54,7 +54,6 @@ const SignUp = () => {
       });
     }
 
-    console.log("user", data, "error", error);
   };
   return (
     <div>

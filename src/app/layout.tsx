@@ -24,6 +24,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       data-theme="light"
       className={`${notoSerifBengli.className} ${hindSiliguri.className} h-full antialiased`}
     >

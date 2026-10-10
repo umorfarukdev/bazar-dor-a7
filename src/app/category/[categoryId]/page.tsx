@@ -1,6 +1,5 @@
-import CategoryProductsCard from "@/components/CategoryProductsCard";
+import ProductList from "@/components/ProductList";
 import { IProduct } from "@/type/productType";
-
 
 interface CategoryProps {
   params: Promise<{
@@ -11,16 +10,12 @@ interface CategoryProps {
 const CategoryProducts = async ({ params }: CategoryProps) => {
   const { categoryId } = await params;
   const res = await fetch(
-    `https://api.api-store.workers.dev/api/bazardor/products?category=${categoryId}`,
+    `https://api.abcz.workers.dev/api/bazardor/products?category=${categoryId}`,
   );
-
-  // console.log(res);
   const categoryProducts: IProduct[] = await res.json();
 
   const categoryImage = categoryProducts[0]?.image;
   const categoryName = categoryProducts[0]?.nameBn;
-  // console.log("Category:", categoryId);
-  // console.log(categoryProducts);
   return (
     <div className="bg-base-300 min-h-screen">
       <div className="max-w-6xl mx-auto">
@@ -33,14 +28,7 @@ const CategoryProducts = async ({ params }: CategoryProps) => {
             </h1>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {categoryProducts.map((product) => (
-            <CategoryProductsCard
-              key={product.id}
-              product={product}
-            ></CategoryProductsCard>
-          ))}
-        </div>
+        <ProductList categoryProducts={categoryProducts}></ProductList>
       </div>
     </div>
   );

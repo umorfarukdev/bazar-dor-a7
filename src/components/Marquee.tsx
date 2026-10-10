@@ -6,7 +6,7 @@ import MarqueeText from "react-marquee-text";
 
 const Marquee = async () => {
   const res = await fetch(
-    "https://api.api-store.workers.dev/api/bazardor/products",
+    "https://api.abcz.workers.dev/api/bazardor/products",
   );
   const products: IProduct[] = await res.json();
   return (
@@ -20,10 +20,10 @@ const Marquee = async () => {
               className="flex gap-1 items-center"
             >
               <h1 className="text-2xl">{product.image}</h1>
-              <h1 className="">{product.nameBn}</h1>
-              <h1 className="text-lg font-semibold">{toBengaliNumber(product.today)}</h1>
-              <span> টাকা/{product.unit === "kg" ? "কেজি" : "লিটার"}</span>
-              <div>
+              <h1 className="font-semibold">{product.nameBn}</h1>
+              <h1 className="font-semibold text-[#1D271F70]">{toBengaliNumber(product.today)}</h1>
+              <span className="text-[#1D271F70] font-semibold"> টাকা/{product.unit === "kg" ? "কেজি" : "লিটার"}</span>
+              <div className="font-semibold">
                 {product.change.dir === "up" ? (
                   <>
                     <div className="flex items-center text-red-600">

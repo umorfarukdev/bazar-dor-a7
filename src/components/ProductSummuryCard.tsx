@@ -13,7 +13,7 @@ const ProductSummuryCard = ({ product }: { product: IProduct }) => {
             <p className="text-sm text-gray-500">সর্বনিম্ন দাম</p>
 
             <h2 className="text-2xl font-bold text-green-600">
-              ৳{Math.min(...product.markets.map((m) => Number(m.min)))}
+              ৳{toBengaliNumber(Math.min(...product.markets.map((m) => Number(m.min))))}
             </h2>
 
             <p className="text-xs text-gray-500">সবচেয়ে কম দামের বাজার
@@ -24,7 +24,7 @@ const ProductSummuryCard = ({ product }: { product: IProduct }) => {
             <p className="text-sm text-gray-500">সর্বাধিক দাম</p>
 
             <h2 className="text-2xl font-bold text-green-600">
-              ৳{Math.max(...product.markets.map((m) => Number(m.max)))}
+              ৳{toBengaliNumber(Math.max(...product.markets.map((m) => Number(m.max))))}
             </h2>
 
             <p className="text-xs text-gray-500">

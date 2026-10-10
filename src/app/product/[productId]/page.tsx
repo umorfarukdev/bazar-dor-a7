@@ -12,12 +12,12 @@ interface ProductsProps {
 const ProductCardDetails = async ({ params }: ProductsProps) => {
   const { productId } = await params;
   const res = await fetch(
-    `https://api.api-store.workers.dev/api/bazardor/products/${productId}`,
+    `https://api.abcz.workers.dev/api/bazardor/products/${productId}`,
   );
 
-  // console.log(res);
+
   const product: IProduct = await res.json();
-  console.log(product);
+
   return (
     <div className="bg-base-300 min-h-screen">
       <TopProductCard product={product}></TopProductCard>
