@@ -1,60 +1,124 @@
-// import { IProduct } from "@/type/productType";
-// import { useState } from "react";
-// import SortProduct from "./SortProduct";
+"use client";
 
-// type SortType = "low" | "high" | "name" | "";
-
-// const ProductList = ({ products }: { products: IProduct[] }) => {
-
-//   const [sortedProducts, setSortedProducts] = useState<IProduct[]>(products);
+import { IProduct } from "@/type/productType";
+import { useState } from "react";
+import SortProduct from "./SortProduct";
 
 
-//   const handleSort = (type: SortType) => {
-
-//     let data:  = [...products];
+type SortType = "default" | "low" | "high";
 
 
-//     if (type === "low") {
-//       data.sort((a, b) => a.today - b.today);
-//     }
+interface ProductListProps {
+  products: IProduct[];
+}
 
 
-//     if (type === "high") {
-//       data.sort((a, b) => b.today - a.today);
-//     }
+const ProductList = ({ products }: ProductListProps) => {
 
 
-//     if (type === "name") {
-//       data.sort((a, b) =>
-//         a.nameBn.localeCompare(b.nameBn, "bn")
-//       );
-//     }
+  const [sortedProducts, setSortedProducts] =
+    useState<IProduct[]>(products);
 
 
-//     setSortedProducts(data);
-//   };
+
+  const bengaliToEnglishNumber = (value: string | number) => {
+
+    const bengaliDigits = "০১২৩৪৫৬৭৮৯";
+
+    return Number(
+      value
+        .toString()
+        .split("")
+        .map((char) => {
+
+          const index = bengaliDigits.indexOf(char);
+
+          return index !== -1 ? index : char;
+
+        })
+        .join("")
+    );
+
+  };
 
 
-//   return (
-//     <div>
 
-//       <SortProduct onSort={handleSort} />
+  const handleSort = (type: SortType) => {
 
 
-//       <div className="grid md:grid-cols-3 gap-5">
+    let data: IProduct[] = [...products];
 
-//         {sortedProducts.map((product) => (
 
-//           <div key={product.id}>
-//             {product.nameBn}
-//           </div>
 
-//         ))}
+    if (type === "low") {
 
-//       </div>
+      data.sort(
+        (a, b) =>
+          bengaliToEnglishNumber(a.today) -
+          bengaliToEnglishNumber(b.today)
+      );
 
-//     </div>
-//   );
-// };
+    }
 
-// export default ProductList;
+
+
+    if (type === "high") {
+
+      data.sort(
+        (a, b) =>
+          bengaliToEnglishNumber(b.today) -
+          bengaliToEnglishNumber(a.today)
+      );
+
+    }
+
+
+
+    if (type === "default") {
+
+      data = [...products];
+
+    }
+
+
+
+    setSortedProducts(data);
+
+  };
+
+
+
+  return (
+
+    <div>
+
+
+      <SortProduct 
+        onSort={handleSort}
+      />
+
+
+
+      <div className="grid md:grid-cols-3 gap-5">
+
+        {
+          sortedProducts.map((product) => (
+
+            <div key={product.id}>
+              {product.nameBn}
+            </div>
+
+          ))
+        }
+
+      </div>
+
+
+    </div>
+
+  );
+
+};
+
+
+export default ProductList;

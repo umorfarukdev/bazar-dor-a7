@@ -2,14 +2,15 @@ import Image from "next/image";
 import Logo from "../../public/logo-icon.png";
 import UserInfo from "./UserInfo";
 import NavLinks from "./NavLinks";
+import Link from "next/link";
 
 const Header = () => {
   const date = new Date().toLocaleDateString("bn-bd", { dateStyle: "full" });
   return (
-    <div className="">
+    <div className="sticky top-0 z-50 bg-white">
       <div className="py-4 border-b-2 border-gray-200">
         <div className="flex justify-between max-w-6xl mx-auto ">
-          <div className="flex gap-2 items-center">
+          <Link href={"/"} className="flex gap-2 items-center">
             <div className="bg-[#34A853] p-3 rounded-xl flex items-center">
               <Image className="" src={Logo} alt="hero logo"></Image>
             </div>
@@ -17,7 +18,7 @@ const Header = () => {
               <h1>বাজার দর</h1>
               <p>{date}</p>
             </div>
-          </div>
+          </Link>
           <UserInfo></UserInfo>
         </div>
       </div>

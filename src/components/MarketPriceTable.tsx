@@ -1,6 +1,8 @@
 import { IProduct } from "@/type/productType";
+import { toBengaliNumber } from "@/utils/number";
 
 const MarketPriceTable = ({ product }: { product: IProduct }) => {
+
   return (
     <div className="p-5">
       <h2 className="text-lg font-bold">বাজারভিত্তিক আজকের দাম</h2>
@@ -23,12 +25,19 @@ const MarketPriceTable = ({ product }: { product: IProduct }) => {
 
                 <td className="p-4 text-[#1D271F70]">{market.division}</td>
 
-                <td className="text-center">৳{market.min}</td>
+                <td className="text-center">
+                  ৳{toBengaliNumber(Number(market.min))}
+                </td>
 
-                <td className="text-center">৳{market.max}</td>
+                <td className="text-center">
+                  ৳{toBengaliNumber(Number(market.max))}
+                </td>
 
                 <td className="text-right pr-4 font-semibold">
-                  ৳{(market.max + market.min) / 2}
+                  ৳
+                  {toBengaliNumber(
+                    Math.round((Number(market.max) + Number(market.min)) / 2),
+                  )}
                 </td>
               </tr>
             ))}

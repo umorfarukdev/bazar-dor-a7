@@ -1,7 +1,8 @@
 import { IProduct } from "@/type/productType";
-import React from "react";
+import { toBengaliNumber } from "@/utils/number";
 
 const ProductSummuryCard = ({ product }: { product: IProduct }) => {
+
   return (
     <div className="">
       <div className="p-5">
@@ -12,7 +13,7 @@ const ProductSummuryCard = ({ product }: { product: IProduct }) => {
             <p className="text-sm text-gray-500">সর্বনিম্ন দাম</p>
 
             <h2 className="text-2xl font-bold text-green-600">
-              ৳{Math.min(...product.markets.map((m) => m.min))}
+              ৳{Math.min(...product.markets.map((m) => Number(m.min)))}
             </h2>
 
             <p className="text-xs text-gray-500">সবচেয়ে কম দামের বাজার
@@ -23,7 +24,7 @@ const ProductSummuryCard = ({ product }: { product: IProduct }) => {
             <p className="text-sm text-gray-500">সর্বাধিক দাম</p>
 
             <h2 className="text-2xl font-bold text-green-600">
-              ৳{Math.max(...product.markets.map((m) => m.max))}
+              ৳{Math.max(...product.markets.map((m) => Number(m.max)))}
             </h2>
 
             <p className="text-xs text-gray-500">
@@ -35,7 +36,7 @@ const ProductSummuryCard = ({ product }: { product: IProduct }) => {
             <p className="text-sm text-gray-500">গড় দাম</p>
 
             <h2 className="text-2xl font-bold text-red-500">
-              ৳{product.today}
+              ৳{toBengaliNumber(product.today)}
             </h2>
 
             <p className="text-xs text-gray-500">প্রতি কেজি-এর হিসাবে</p>

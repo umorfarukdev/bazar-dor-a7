@@ -56,11 +56,11 @@ const UserInfo = () => {
                 tabIndex={-1}
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-60 p-2 shadow"
               >
+                <li>
+                  <Link href={"/profile"} className="justify-between text-xl btn text-white bg-green-700">Profile</Link>
+                </li>
                 <li>{userInfo.name}</li>
                 <li>{userInfo.email}</li>
-                <li>
-                  <a className="justify-between">Profile</a>
-                </li>
                 <li>
                   <Link
                     onClick={handleSignOut}

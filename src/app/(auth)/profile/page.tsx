@@ -1,3 +1,4 @@
+"use client";
 import { signOut, useSession } from "@/lib/auth-client";
 import Image from "next/image";
 import Link from "next/link";
@@ -25,32 +26,39 @@ const Profile = () => {
     });
   };
   return (
-    <div>
-      <div className="max-w-5xl">
-        <h1 className="text-2xl font-bold">আমার প্রোফাইল</h1>
-        <p className="text-sm text-[#1D271F70]">আপনার অ্যাকাউন্টের তথ্য এখানে দেখুন।</p>
-        <div className="flex items-center justify-between p-6">
-          <div className="flex items-center gap-3">
-            <Image
-              src={session?.user?.image || "/user.png"}
-              height={50}
-              width={50}
-              alt="name"
-              unoptimized
-            ></Image>
-            <div>
-              <h1 className="font-semibold text-xl">{session?.user.name}</h1>
-              <p className="text-sm text-[#1D271F70]">{session?.user.email}</p>
+    <div className="bg-base-300 min-h-screen">
+      <div className="max-w-4xl mx-auto bg-white p-8 rounded-2xl mt-6">
+        <div>
+          <h1 className="text-2xl font-bold">আমার প্রোফাইল</h1>
+          <p className="text-sm text-[#1D271F70]">
+            আপনার অ্যাকাউন্টের তথ্য এখানে দেখুন।
+          </p>
+          <div className="flex items-center justify-between p-6">
+            <div className="flex items-center gap-3">
+              <Image
+                src={session?.user?.image || "/user.png"}
+                height={50}
+                width={50}
+                alt="name"
+                unoptimized
+              ></Image>
+              <div>
+                <h1 className="font-semibold text-xl">{session?.user.name}</h1>
+                <p className="text-sm text-[#1D271F70]">
+                  {session?.user.email}
+                </p>
+              </div>
             </div>
+            <Link
+              onClick={handleSignOut}
+              href={"/signup"}
+              className="btn btn-outline border-red-600 text-red-600"
+            >
+              ↩ সাইন আউট
+            </Link>
           </div>
-          <Link
-            onClick={handleSignOut}
-            href={"/signup"}
-            className="btn btn-outline border-red-600 text-red-600"
-          >
-            ↩ সাইন আউট
-          </Link>
         </div>
+        <Link className="btn bg-green-700 text-white w-full" href={"/updateProfile"}>Update Profile</Link>
       </div>
     </div>
   );

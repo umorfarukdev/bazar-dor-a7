@@ -1,8 +1,8 @@
 interface IMarket {
   market: string;
   division: string;
-  min: number;
-  max: number;
+  min: number | string;
+  max: number | string;
 }
 
 export interface IProduct {

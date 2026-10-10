@@ -9,7 +9,7 @@ interface ProductsProps {
   }>;
 }
 
-const page = async ({ params }: ProductsProps) => {
+const ProductCardDetails = async ({ params }: ProductsProps) => {
   const { productId } = await params;
   const res = await fetch(
     `https://api.api-store.workers.dev/api/bazardor/products/${productId}`,
@@ -32,4 +32,4 @@ const page = async ({ params }: ProductsProps) => {
   );
 };
 
-export default page;
+export default ProductCardDetails;

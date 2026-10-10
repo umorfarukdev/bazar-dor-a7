@@ -1,44 +1,87 @@
-// "use client";
+"use client";
 
-// import { useState } from "react";
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 
-// const SortProduct = ({ onSort }) => {
-//   const [value, setValue] = useState("");
 
-//   const handleSort = (e: React.ReactHTMLElement<HTMLFormElement>) => {
-//     const sortValue = e.target.value;
-//     setValue(sortValue);
-//     onSort(sortValue);
-//   };
+type SortType = "default" | "low" | "high";
 
-//   return (
-//     <div className="flex justify-end mb-5">
-//       <div className="flex items-center gap-3">
-//         <label className="font-semibold text-gray-700">সাজান:</label>
 
-//         <select
-//           value={value}
-//           onChange={handleSort}
-//           className="
-//             select 
-//             select-bordered 
-//             bg-white 
-//             rounded-xl
-//             w-48
-//             focus:outline-none
-//           "
-//         >
-//           <option value="">নির্বাচন করুন</option>
+interface SortProductProps {
+  onSort: (type: SortType) => void;
+}
 
-//           <option value="low">দাম কম থেকে বেশি</option>
 
-//           <option value="high">দাম বেশি থেকে কম</option>
+const SortProduct = ({ onSort }: SortProductProps) => {
 
-//           <option value="name">নাম অনুযায়ী</option>
-//         </select>
-//       </div>
-//     </div>
-//   );
-// };
+  const [value, setValue] = useState<SortType>("default");
 
-// export default SortProduct;
+
+  const handleSort = (
+    e: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+
+    const sortValue = e.target.value as SortType;
+
+    setValue(sortValue);
+    onSort(sortValue);
+
+  };
+
+
+  return (
+
+    <div className="flex justify-end mb-5">
+
+      <div className="relative">
+
+        <select
+          value={value}
+          onChange={handleSort}
+          className="
+            appearance-none
+            border
+            rounded-lg
+            bg-white
+            px-4
+            py-2
+            pr-10
+            cursor-pointer
+          "
+        >
+
+          <option value="default">
+            ডিফল্ট
+          </option>
+
+          <option value="low">
+            দাম: কম থেকে বেশি
+          </option>
+
+          <option value="high">
+            দাম: বেশি থেকে কম
+          </option>
+
+        </select>
+
+
+        <ChevronDown
+          size={18}
+          className="
+            absolute
+            right-3
+            top-1/2
+            -translate-y-1/2
+            pointer-events-none
+          "
+        />
+
+      </div>
+
+    </div>
+
+  );
+};
+
+
+export default SortProduct;

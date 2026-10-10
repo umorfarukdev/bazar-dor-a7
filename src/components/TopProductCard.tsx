@@ -1,7 +1,9 @@
 import { IProduct } from "@/type/productType";
+import { toBengaliNumber } from "@/utils/number";
 import React from "react";
 
-const TopProductCard = ({product} : {product: IProduct}) => {
+const TopProductCard = ({ product }: { product: IProduct }) => {
+
   return (
     <div className="max-w-6xl mx-auto mt-10">
       <div className="bg-white rounded-2xl border p-5 flex items-center justify-between shadow-sm">
@@ -26,7 +28,9 @@ const TopProductCard = ({product} : {product: IProduct}) => {
         <div className="bg-gray-50 rounded-xl px-5 py-4 text-center min-w-28">
           <p className="text-xs text-gray-500 mb-1">আজকের দাম</p>
 
-          <h1 className="text-3xl font-bold">৳{product.today}</h1>
+          <h1 className="text-3xl font-bold">
+            ৳{toBengaliNumber(product.today)}
+          </h1>
 
           <p className="text-xs text-gray-500">টাকা / {product.unit}</p>
 
@@ -35,7 +39,8 @@ const TopProductCard = ({product} : {product: IProduct}) => {
               product.change.dir === "up" ? "text-red-500" : "text-green-600"
             }`}
           >
-            {product.change.dir === "up" ? "▲" : "▼"} {product.change.pct}%
+            {product.change.dir === "up" ? "▲" : "▼"}{" "}
+            {toBengaliNumber(product.change.pct)}%
           </p>
         </div>
       </div>

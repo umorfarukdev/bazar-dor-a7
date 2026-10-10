@@ -1,6 +1,7 @@
 import React from "react";
 import Hero from "./../../public/bazar-hero.png";
 import Image from "next/image";
+import Link from "next/link";
 
 const Banner = () => {
   const date = new Date().toLocaleDateString("bn-bd", {
@@ -18,9 +19,9 @@ const Banner = () => {
               চাল, ডাল, তেল, সবজি, মাছ, মাংস, ডিম ও মসলার দাম — বাজারভিত্তিক
               বিস্তারিত, গড়, সর্বনিম্ন-সর্বাধিক এবং দামের পরিবর্তন এক জায়গায়।
             </p>
-            <button className="btn bg-[#34A853] text-white font-semibold">
+            <Link href="#all-products" className="btn bg-[#34A853] text-white font-semibold">
               সব পণ্য দেখুন
-            </button>
+            </Link>
           </div>
         </div>
       </div>
