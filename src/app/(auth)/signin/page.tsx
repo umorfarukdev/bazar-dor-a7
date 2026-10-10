@@ -4,9 +4,12 @@ import GithubSign from "@/components/GithubSign";
 import GoogleSign from "@/components/GoogleSign";
 import { signIn } from "@/lib/auth-client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Bounce, toast } from "react-toastify";
 
 const SignIn = () => {
+
+  const router = useRouter();
   const handleSignIn = async (e: React.SubmitEvent<HTMLElement>) => {
     e.preventDefault();
 
@@ -19,7 +22,6 @@ const SignIn = () => {
     const { data, error } = await signIn.email({
       email: signInData.email,
       password: signInData.password,
-      callbackURL: "/"
     });
 
     if (error) {
@@ -49,6 +51,8 @@ const SignIn = () => {
         transition: Bounce,
       });
     }
+
+    router.push("/")
   };
   return (
     <div>
