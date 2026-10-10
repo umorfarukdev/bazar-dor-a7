@@ -3,10 +3,13 @@ import GithubSign from "@/components/GithubSign";
 import GoogleSign from "@/components/GoogleSign";
 import { signUp } from "@/lib/auth-client";
 import Link from "next/link";
+import {  useRouter } from "next/navigation";
 import React from "react";
 import { Bounce, toast } from "react-toastify";
 
 const SignUp = () => {
+
+  const router = useRouter()
   const handleSignUp = async (e: React.SubmitEvent<HTMLElement>) => {
     e.preventDefault();
 
@@ -53,6 +56,8 @@ const SignUp = () => {
         transition: Bounce,
       });
     }
+
+    router.push("/")
 
   };
   return (
