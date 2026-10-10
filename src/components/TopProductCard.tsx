@@ -1,7 +1,8 @@
 import { IProduct } from "@/type/productType";
 import { toBengaliNumber } from "@/utils/number";
-import React from "react";
+
 import { unitLabels } from "./CategoryProductsCard";
+
 
 const TopProductCard = ({ product }: { product: IProduct }) => {
 
@@ -19,7 +20,9 @@ const TopProductCard = ({ product }: { product: IProduct }) => {
               {product.nameBn}
             </h2>
 
-            <p className="text-gray-500 text-sm">{unitLabels[product.unit]} এর দাম</p>
+            <p className="text-gray-500 text-sm">
+              {unitLabels[product.unit]} এর দাম
+            </p>
 
             <p className="text-gray-600 mt-1">গতকালের তুলনায় আজকের দাম</p>
           </div>
@@ -33,7 +36,9 @@ const TopProductCard = ({ product }: { product: IProduct }) => {
             ৳{toBengaliNumber(product.today)}
           </h1>
 
-          <p className="text-xs text-gray-500">টাকা / {unitLabels[product.unit]}</p>
+          <p className="text-xs text-gray-500">
+            টাকা / {unitLabels[product.unit]}
+          </p>
 
           <p
             className={`mt-2 text-sm font-semibold ${

@@ -43,7 +43,7 @@ export default async function Home() {
           </div>
         </section>
 
-        <section id="all-products" className="mt-16 scroll-mt-40">
+        <section id="all-products" className="mt-16 scroll-mt-62 md:scroll-mt-52 lg:scroll-mt-44">
           <h1 className="text-3xl font-bold mb-3">সব পণ্য</h1>
           <p className="text-[#1D271F70] text-2xl mb-4">মোট ৩৩টি পণ্য দেখানো হচ্ছে</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
