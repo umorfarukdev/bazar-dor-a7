@@ -1,5 +1,6 @@
 import ProductList from "@/components/ProductList";
 import { IProduct } from "@/type/productType";
+import { notFound } from "next/navigation";
 
 interface CategoryProps {
   params: Promise<{
@@ -14,6 +15,9 @@ const CategoryProducts = async ({ params }: CategoryProps) => {
   );
   const categoryProducts: IProduct[] = await res.json();
 
+  if (categoryProducts.length === 0) {
+    notFound();
+  }
   const categoryImage = categoryProducts[0]?.image;
   const categoryName = categoryProducts[0]?.nameBn;
   return (

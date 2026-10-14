@@ -2,6 +2,7 @@ import MarketPriceTable from "@/components/MarketPriceTable";
 import ProductSummuryCard from "@/components/ProductSummuryCard";
 import TopProductCard from "@/components/TopProductCard";
 import { IProduct } from "@/type/productType";
+import { notFound } from "next/navigation";
 import React from "react";
 interface ProductsProps {
   params: Promise<{
@@ -15,6 +16,9 @@ const ProductCardDetails = async ({ params }: ProductsProps) => {
     `https://api.abcz.workers.dev/api/bazardor/products/${productId}`,
   );
 
+  if (!res.ok) {
+    notFound();
+  }
 
   const product: IProduct = await res.json();
 
