@@ -3,13 +3,12 @@ import GithubSign from "@/components/GithubSign";
 import GoogleSign from "@/components/GoogleSign";
 import { signUp } from "@/lib/auth-client";
 import Link from "next/link";
-import {  useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { Bounce, toast } from "react-toastify";
 
 const SignUp = () => {
-
-  const router = useRouter()
+  const router = useRouter();
   const handleSignUp = async (e: React.SubmitEvent<HTMLElement>) => {
     e.preventDefault();
 
@@ -21,12 +20,11 @@ const SignUp = () => {
       password: string;
     };
 
-    const { data, error } = await signUp.email({
+    const { error } = await signUp.email({
       name: signInData.name,
       image: signInData.image,
       email: signInData.email,
       password: signInData.password,
-      callbackURL: "/"
     });
 
     if (error) {
@@ -41,24 +39,21 @@ const SignUp = () => {
         theme: "colored",
         transition: Bounce,
       });
+      return;
     }
 
-    if (data) {
-      toast.success("User Create Successfully!", {
-        position: "bottom-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,
-      });
-    }
-
-    router.push("/")
-
+    toast.success("User Create Successfully!", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+    router.push("/signin");
   };
   return (
     <div>

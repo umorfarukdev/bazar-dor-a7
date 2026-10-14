@@ -8,7 +8,6 @@ import { useRouter } from "next/navigation";
 import { Bounce, toast } from "react-toastify";
 
 const SignIn = () => {
-
   const router = useRouter();
   const handleSignIn = async (e: React.SubmitEvent<HTMLElement>) => {
     e.preventDefault();
@@ -19,7 +18,7 @@ const SignIn = () => {
       password: string;
     };
 
-    const { data, error } = await signIn.email({
+    const { error } = await signIn.email({
       email: signInData.email,
       password: signInData.password,
     });
@@ -38,21 +37,19 @@ const SignIn = () => {
       });
     }
 
-    if (data) {
-      toast.success("User Login Successfull!", {
-        position: "bottom-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,
-      });
-    }
+    toast.success("User Login Successfull!", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
 
-    router.push("/")
+    router.push("/");
   };
   return (
     <div>

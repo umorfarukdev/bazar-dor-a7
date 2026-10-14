@@ -14,8 +14,7 @@ const Marquee = async () => {
       <div className="py-4 border-b-2 border-gray-200">
         <div className="flex gap-16">
           {products.map((product) => (
-            <Link
-              href={"/#"}
+            <div
               key={product.id}
               className="flex gap-1 items-center"
             >
@@ -44,7 +43,7 @@ const Marquee = async () => {
                   </>
                 )}
               </div>
-            </Link>
+            </div>
           ))}
         </div>
       </div>
